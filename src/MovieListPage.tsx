@@ -4,10 +4,9 @@ import { css } from "react-emotion";
 import { Spacer, Panel, FlexInline, TomatoeRating, PageTitle } from "./dumb";
 
 export function MovieListPage({ onMovieClick }) {
-  const movies: Array<movieExcerpt> = movieListJSON;
+  const movies: Array<movieExcerpt> = movieListJSON,
+    styles = css``;
 
-  const styles = css`
-  `;
   return (
     <div className={styles}>
       <Spacer />
@@ -28,40 +27,39 @@ export function MovieListPage({ onMovieClick }) {
   );
 }
 
+const MovieLinkStyles = css`
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  p {
+    font-size: 14px;
+    color: #969aa0;
+    line-height: 1.5;
+  }
+  i {
+    font-size: 32px;
+    font-style: normal;
+    padding-right: 16px;
+  }
+  i:last-child {
+    margin-left: auto;
+    font-size: 28px;
+    opacity: 0;
+  }
+  :hover {
+    i:last-child {
+      opacity: 1;
+    }
+  }
+`;
+
 function MovieLink({ excerpt, onClick }) {
   const { title, rating, gross } = excerpt as movieExcerpt;
 
-  const styles = css`
-    h1 {
-      font-size: 22px;
-      font-weight: bold;
-      line-height: 1;
-    }
-    p {
-      font-size: 14px;
-      color: #969AA0;
-      line-height: 1.5;
-    }
-    i {
-      font-size: 32px;
-      font-style: normal;
-      padding-right: 16px;
-    }
-    i:last-child {
-      margin-left: auto;
-      font-size: 28px;
-      opacity: 0;
-    }
-    :hover {
-
-      i:last-child{
-        opacity: 1;
-      }
-
-    }
-  `;
   return (
-    <article onClick={onClick} className={styles}>
+    <article onClick={onClick} className={MovieLinkStyles}>
       <Panel hoverable>
         <FlexInline>
           <i>

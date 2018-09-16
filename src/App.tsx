@@ -11,6 +11,30 @@ import {
   Container
 } from "./dumb";
 
+const AppStyles = css`
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+  i {
+    font-style: normal;
+  }
+
+  background: #12121a;
+  color: white;
+  font-family: sans-serif;
+  padding: 40px;
+`;
+
 export class App extends React.Component {
   state = {
     currentId: null,
@@ -42,32 +66,8 @@ export class App extends React.Component {
   render() {
     const { currentId, showDetails } = this.state;
 
-    const styles = css`
-      *,
-      *:before,
-      *:after {
-        box-sizing: border-box;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      p {
-        margin: 0;
-      }
-      i {
-        font-style: normal;
-      }
-
-      background: #12121a;
-      color: white;
-      font-family: sans-serif;
-      padding: 40px;
-    `;
-
     return (
-      <div className={styles}>
+      <div className={AppStyles}>
         <Container>
           {showDetails
             ? this.renderDetail(currentId as any)
